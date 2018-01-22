@@ -27,7 +27,7 @@ clean_up() {
 
 clone_openwrt() {
   if ! [ -d openwrt ]; then
-    git clone git://git.openwrt.org/15.05/openwrt.git openwrt
+    git clone https://github.com/openwrt/chaos_calmer openwrt
   fi
 }
 
