@@ -54,11 +54,9 @@ configure_openwrt() {
       -e 's/\(CONFIG_TARGET_ar71xx_generic_Default\)=y/# \1 is not set/' \
       -e "s/# \(CONFIG_TARGET_ar71xx_generic_$TARGET_PROFILE\) is not set/\1=y/" \
       -e 's/# \(CONFIG_PACKAGE_click\) is not set/\1=y/' \
-      -e 's/# \(CONFIG_PACKAGE_openvswitch\) is not set/\1=y/' \
       -e 's/# \(CONFIG_DEVEL\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_wireless-tools\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_luci\) is not set/\1=y/' \
-      -e 's/# \(CONFIG_PACKAGE_openvpn-nossl\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_kmod-openvswitch\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_kmod-tun\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_kmod-usb-storage\) is not set/\1=y/' \
@@ -77,6 +75,14 @@ configure_openwrt() {
     .config
   make defconfig	
  
+ # To be installed manually 
+ #  - openvswitch
+ #  - openvpn-nossl
+ #  - joe
+ #  - nano
+ #  - tcpdump
+ #  - hostapd
+ #  - hostapd-utils
 
 #Remove the "CONFIG_USE_MIPS16=y" option. Uncheck the MIPS16 option:
 #	Advanced config. options/ Target opt./ Build packages with MIPS16 instructions
