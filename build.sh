@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 #
 # OpenWrt firmware build script for TP-LINK TL-WR1043ND
 #
