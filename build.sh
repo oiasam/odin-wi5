@@ -1,21 +1,10 @@
 #!/bin/bash
-#
-# OpenWrt firmware build script for  TL-WR1043ND
-#
+# OpenWrt firmware build script for TL-WR1043ND 
 # Added features for the Horizon 2020 Wi-5 project:
-#
-#   - Click router with Odin Agent
+#   - Click router with Odin Agent 
 #   - Open vSwitch
-#
-# Copyright (c) 2015 AirTies Wireless Networks
 
-# before running this script, you need to check whether these packages are installed in your compiling machine:
-# ncurses-dev (the grey and blue menuconfig menus)
-# gawk
-# svnk (only in Debian 6)
-# subversion (only in Debian 7)
-# subversion-tools
-# build-essential
+# Copyright (c) 2015 AirTies Wireless Networks
 
 
 set -e
