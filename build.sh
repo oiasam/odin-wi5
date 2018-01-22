@@ -1,6 +1,6 @@
-#!/bin/bash 
+#!/bin/bash
 #
-# OpenWrt firmware build script for TP-LINK TL-WR1043ND
+# OpenWrt firmware build script for  TL-WR1043ND
 #
 # Added features for the Horizon 2020 Wi-5 project:
 #
