@@ -102,4 +102,3 @@ clone_openwrt
 patch_ath9k
 install_custom_feeds
 configure_openwrt
-build
