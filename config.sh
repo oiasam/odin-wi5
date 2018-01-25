@@ -67,6 +67,7 @@ configure_openwrt() {
       -e 's/# \(CONFIG_PACKAGE_kmod-nls-iso8859-13\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_kmod-crypto-crc32c\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_kmod-lib-crc32c\) is not set/\1=y/' \
+      -e 's/# \(CONFIG_PACKAGE_kmod-rtl8192cu\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_ATH_DEBUG\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_kmod-ath\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_kmod-ath9k-htc\) is not set/\1=y/' \
