@@ -36,8 +36,8 @@ ifconfig wlan1 up
 ## Routes
 # add these routes in order to permit control from other networks (this is very particular of Unizar)
 # traffic from these networks will not go through the default gateway
-route add -net 155.210.158.0 netmask 255.255.255.0 gw 155.210.157.254 eth0
-route add -net 155.210.156.0 netmask 255.255.255.0 gw 155.210.157.254 eth0
+# route add -net 155.210.158.0 netmask 255.255.255.0 gw 155.210.157.254 eth0
+# route add -net 155.210.156.0 netmask 255.255.255.0 gw 155.210.157.254 eth0
 
 # set the default gateway where masquerading is being performed
 #route del default gw 155.210.157.254
@@ -94,13 +94,13 @@ sleep 3
 echo "Launching Click"
 
 # Mount USB if you need it for putting the Click ('click') and Click-align ('click-al') binaries
-echo "Mounting USB"
-if [ ! -d "/mnt/usb" ]; then
-  mkdir -p /mnt/usb
-fi
-mount /dev/sda1 /mnt/usb/
+#echo "Mounting USB"
+#if [ ! -d "/mnt/usb" ]; then
+  #mkdir -p /mnt/usb
+#fi
+#mount /dev/sda1 /mnt/usb/
 
-cd /mnt/usb
+#cd /mnt/usb
 ./click < click-al agent.cli &    # This makes the alignment and calls Click at the same time
 #./click aagent.cli &             # Old command, which required an aligned version of the .cli file
 sleep 1
