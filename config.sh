@@ -67,7 +67,6 @@ configure_openwrt() {
       -e 's/# \(CONFIG_PACKAGE_kmod-nls-iso8859-13\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_kmod-crypto-crc32c\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_kmod-lib-crc32c\) is not set/\1=y/' \
-      -e 's/# \(CONFIG_PACKAGE_kmod-rtl8192cu\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_hostapd\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_hostapd-utils\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_ATH_DEBUG\) is not set/\1=y/' \
@@ -84,8 +83,6 @@ configure_openwrt() {
  #  - joe
  #  - nano
  #  - tcpdump
- #  - hostapd
- #  - hostapd-utils
 
 #Remove the "CONFIG_USE_MIPS16=y" option. Uncheck the MIPS16 option:
 #	Advanced config. options/ Target opt./ Build packages with MIPS16 instructions
