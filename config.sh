@@ -1,7 +1,7 @@
 #!/bin/bash
 # OpenWrt firmware build script for TL-WR1043ND 
 # Added features for the Horizon 2020 Wi-5 project:
-#   - Click router with Odin Agent 
+#   - Click router with Odin Agent (To be moved to the AP after flashing)
 #   - Open vSwitch
 
 # Copyright (c) 2015 AirTies Wireless Networks
