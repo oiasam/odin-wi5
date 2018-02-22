@@ -6,9 +6,7 @@
 
 # Copyright (c) 2015 AirTies Wireless Networks
 
-
 set -e
-
 
 clean_up() {
   rm -rf openwrt odin-driver-patches 
@@ -19,7 +17,6 @@ clone_openwrt() {
     git clone https://github.com/openwrt/chaos_calmer openwrt
   fi
 }
-
 
 patch_ath9k() {
   if ! [ -d odin-driver-patches ]; then
@@ -34,16 +31,15 @@ patch_ath9k() {
 }
 
 #add the required feeds, i.e. packages you want to make available in menuconfig
-install_custom_feeds() {
+install_feeds() {
   cp openwrt/feeds.conf.default openwrt/feeds.conf
-  echo "src-link custom `pwd`/custom" >> openwrt/feeds.conf
+  #echo "src-link custom `pwd`/custom" >> openwrt/feeds.conf
   cd openwrt
   ./scripts/feeds update -a
   ./scripts/feeds install -a 
 }
 
 # select the packages you want to be set to be compiled and installed 
-
 # to add the Support for wireless debugging in ath9k driver (this will call debug.c).
 #   Kernel modules / Wireless drivers / kmod-ath / Atheros wireless debugging
 #   set the flag CONFIG_PACKAGE_ATH_DEBUG=y in the .conf file
@@ -53,10 +49,11 @@ configure_openwrt() {
   sed -i.orig \
       -e 's/\(CONFIG_TARGET_ar71xx_generic_Default\)=y/# \1 is not set/' \
       -e "s/# \(CONFIG_TARGET_ar71xx_generic_$TARGET_PROFILE\) is not set/\1=y/" \
-      -e 's/# \(CONFIG_PACKAGE_click\) is not set/\1=y/' \
+      -e 's/# \(CONFIG_PACKAGE_openvswitch\) is not set/\1=y/' \
       -e 's/# \(CONFIG_DEVEL\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_wireless-tools\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_luci\) is not set/\1=y/' \
+      -e 's/# \(CONFIG_PACKAGE_openvpn-nossl\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_kmod-openvswitch\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_kmod-tun\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_kmod-usb-storage\) is not set/\1=y/' \
@@ -78,15 +75,12 @@ configure_openwrt() {
   make defconfig	
  
  # To be installed manually 
- #  - openvswitch
- #  - openvpn-nossl
  #  - joe
  #  - nano
  #  - tcpdump
 
 #Remove the "CONFIG_USE_MIPS16=y" option. Uncheck the MIPS16 option:
-#	Advanced config. options/ Target opt./ Build packages with MIPS16 instructions
-
+#Advanced config. options/ Target opt./ Build packages with MIPS16 instructions
   sed -i.orig \
       -e 's/# \(CONFIG_TARGET_OPTIONS\) is not set/\1=y/' \
       -e 's/\(CONFIG_USE_MIPS16\)=y/# \1 is not set/' \
@@ -94,10 +88,10 @@ configure_openwrt() {
   make defconfig
 
 #Remove the "CONFIG_PACKAGE_wpad-mini=y" option, it conflicts with hostpda
-  #sed -i.orig \
-  #-e 's/\(CONFIG_PACKAGE_wpad-mini\)=y/# \1 is not set/' \
-    #.config
-  #make defconfig
+  sed -i.orig \
+      -e 's/\(CONFIG_PACKAGE_wpad-mini\)=y/# \1 is not set/' \
+    .config
+  make defconfig
   
   sed -i.orig \
       -e 's/# \(CONFIG_PACKAGE_openvswitch-ipsec\) is not set/\1=y/' \
@@ -105,12 +99,8 @@ configure_openwrt() {
   make defconfig
 }
 
-build() {
-  make -j 4
-}
-
 clean_up
 clone_openwrt
 patch_ath9k
-install_custom_feeds
+install_feeds
 configure_openwrt
