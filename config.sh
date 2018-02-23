@@ -77,6 +77,7 @@ configure_openwrt() {
  #  - joe
  #  - nano
  #  - tcpdump
+ #  - openvswitch
 
 #Remove the "CONFIG_USE_MIPS16=y" option. Uncheck the MIPS16 option:
 #Advanced config. options/ Target opt./ Build packages with MIPS16 instructions
@@ -87,10 +88,10 @@ configure_openwrt() {
   make defconfig
 
 #Remove the "CONFIG_PACKAGE_wpad-mini=y" option, it conflicts with hostpda
-  sed -i.orig \
-      -e 's/\(CONFIG_PACKAGE_wpad-mini\)=y/# \1 is not set/' \
-    .config
-  make defconfig
+  #sed -i.orig \
+      #-e 's/\(CONFIG_PACKAGE_wpad-mini\)=y/# \1 is not set/' \
+    #.config
+  #make defconfig
   
   sed -i.orig \
       -e 's/# \(CONFIG_PACKAGE_openvswitch-ipsec\) is not set/\1=y/' \
