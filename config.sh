@@ -78,6 +78,10 @@ configure_openwrt() {
  #  - nano
  #  - tcpdump
  #  - openvswitch
+ #  - hostapd
+ #  - hostapd-utils
+ #  - usbutils
+ #  - libstdcpp
 
 #Remove the "CONFIG_USE_MIPS16=y" option. Uncheck the MIPS16 option:
 #Advanced config. options/ Target opt./ Build packages with MIPS16 instructions
