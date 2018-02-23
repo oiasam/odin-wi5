@@ -49,7 +49,6 @@ configure_openwrt() {
   sed -i.orig \
       -e 's/\(CONFIG_TARGET_ar71xx_generic_Default\)=y/# \1 is not set/' \
       -e "s/# \(CONFIG_TARGET_ar71xx_generic_$TARGET_PROFILE\) is not set/\1=y/" \
-      -e 's/# \(CONFIG_PACKAGE_openvswitch\) is not set/\1=y/' \
       -e 's/# \(CONFIG_DEVEL\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_wireless-tools\) is not set/\1=y/' \
       -e 's/# \(CONFIG_PACKAGE_luci\) is not set/\1=y/' \
